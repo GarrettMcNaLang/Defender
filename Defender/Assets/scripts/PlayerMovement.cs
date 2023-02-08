@@ -33,6 +33,6 @@ public class PlayerMovement : MonoBehaviour
             transform.position = new Vector3(leftBoundary,transform.position.y, 0);
         }
         //limiter reference from the coordinates of the x-axis will be used from the
-        //position of the object in the inspector
+        //position of the object in the inspector, without editing the script
     }
 }
