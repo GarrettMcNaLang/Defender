@@ -26,11 +26,11 @@ public class PlayerMovement : MonoBehaviour
         //creates a boundary on the left and right side of the screen
         if(transform.position.x >= rightBoundary)
         {
-            transform.position = new Vector3(rightBoundary, transform.position.y, 0);
+            transform.position = new Vector3(rightBoundary, transform.position.y, transform.position.z);
         }
         else if(transform.position.x <= leftBoundary)
         {
-            transform.position = new Vector3(leftBoundary,transform.position.y, 0);
+            transform.position = new Vector3(leftBoundary,transform.position.y, transform.position.z);
         }
         //limiter reference from the coordinates of the x-axis will be used from the
         //position of the object in the inspector, without editing the script

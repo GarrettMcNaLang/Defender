@@ -21,7 +21,7 @@ public class ShootingScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        Shoot();
     }
     public void Shoot()
     {
@@ -33,13 +33,13 @@ public class ShootingScript : MonoBehaviour
         if(Input.GetKey(KeyCode.Space) && currentTime > nextFire)
         {
             //adds current time so as to not shoot again
-            nextFire += currentTime;
+            //nextFire += currentTime;
             //shoot and creat the object
             //Quaternion identity means to no rotation, so it is perfectly on an axis
             Instantiate(Projectile, ProjectileSpawn.position, Quaternion.identity);
             //after projectile is made, current time is subtracted so 
             //that it's valid in time interval
-            nextFire -= currentTime;
+            //nextFire -= currentTime;
             //starts over current time
             currentTime = 0.0f;
         }
