@@ -18,5 +18,18 @@ public class AsteroidScript : MonoBehaviour
 
         //Compute the new position
         position = new Vector2 (position.x, position.y - speed * Time.deltaTime);
+
+        //Update the position
+        transform.position = position;
+        
+        //Bottom left point of the screen
+        Vector2 min = Camera.main.ViewportToWorldPoint(new Vector2(0, 0));
+
+
+        //destroys the gameobject if it goes off the screen
+        if(transform.position.y < min.y)
+        {
+            Destroy(gameObject);
+        }
     }
 }

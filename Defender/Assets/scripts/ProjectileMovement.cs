@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ProjectileMovement : MonoBehaviour
 {
+    
     public Rigidbody2D projectile;
 
     public float MoveSpeed = 10.0f;
@@ -17,5 +18,17 @@ public class ProjectileMovement : MonoBehaviour
     void Update()
     {
         projectile.velocity = new Vector2(0, 1) * MoveSpeed;
+
+        
     }
+
+    //destroys enemy on collision with projectile
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.name == "asteroid")
+        {
+            Destroy(gameObject);
+        }
+    }
+    
 }
