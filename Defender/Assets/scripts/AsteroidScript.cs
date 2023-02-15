@@ -4,11 +4,16 @@ using UnityEngine;
 
 public class AsteroidScript : MonoBehaviour
 {
+    public Transform Object;
     public float speed;
+    private Vector2 screenborders;
+    
+ // private ASpawner spawner;
+    
     // Start is called before the first frame update
     void Start()
     {
-        
+        screenborders = Camera.main.WorldToScreenPoint(Object.position);
     }
 
     // Update is called once per frame
@@ -21,13 +26,13 @@ public class AsteroidScript : MonoBehaviour
 
         //Update the position
         transform.position = position;
-        
+
         //Bottom left point of the screen
-        Vector2 min = Camera.main.ViewportToWorldPoint(new Vector2(0, 0));
+        
 
 
         //destroys the gameobject if it goes off the screen
-        if(transform.position.y < min.y)
+        if (transform.position.y < screenborders.y * 2)
         {
             Destroy(gameObject);
         }
