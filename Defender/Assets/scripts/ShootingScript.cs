@@ -22,6 +22,8 @@ public class ShootingScript : MonoBehaviour
     void Update()
     {
         Shoot();
+
+
     }
     public void Shoot()
     {
@@ -42,6 +44,16 @@ public class ShootingScript : MonoBehaviour
             //nextFire -= currentTime;
             //starts over current time
             currentTime = 0.0f;
+        }
+    }
+
+    //destroys enemy on collision with projectile
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.name == "Asteroid")
+        {
+            Destroy(collision.gameObject);
+            Debug.Log("Shot");
         }
     }
 }

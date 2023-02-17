@@ -8,14 +8,14 @@ public class ASpawner : MonoBehaviour
 
     public float MaxSpawnRateS = 10f;
 
-    private Vector2 confinesL;
-    private Vector2 confinesR;
+    [SerializeField] float LSide = 0f;
+    [SerializeField] float RSide = 0f;
+    
+    
 
     // Start is called before the first frame update
     void Start()
     {
-       confinesL = Camera.main.WorldToScreenPoint(new Vector3(-6.2f, -0.00f ));
-        confinesR = Camera.main.WorldToScreenPoint(new Vector3(5.81f, -0.00f ));
         Invoke("SpawnEnemy", MaxSpawnRateS);
 
         InvokeRepeating("IncreaseSpawnRate", 0f, 30f);
@@ -34,7 +34,8 @@ public class ASpawner : MonoBehaviour
 
         //instantiates the enemy
         GameObject Enemy = (GameObject)Instantiate(AsteroidPrefab);
-        Enemy.transform.position = new Vector2(Random.Range(confinesL.x, confinesR.x), confinesL.y);
+        Enemy.transform.position = new Vector3(Random.Range(LSide, RSide), transform.position.y);
+
 
         NextSpawn();
     }

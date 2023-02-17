@@ -19,16 +19,16 @@ public class ProjectileMovement : MonoBehaviour
     {
         projectile.velocity = new Vector2(0, 1) * MoveSpeed;
 
-        
-    }
+        Vector2 top = Camera.main.ViewportToWorldPoint(new Vector2(1, 1));
 
-    //destroys enemy on collision with projectile
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.name == "asteroid")
+        if (transform.position.y > top.y)
         {
             Destroy(gameObject);
         }
     }
+
     
+
+
+
 }

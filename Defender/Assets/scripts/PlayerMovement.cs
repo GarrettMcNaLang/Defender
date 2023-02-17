@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
-{
+{   
     [SerializeField] float leftBoundary = 0f;
     [SerializeField] float rightBoundary = 0f;
     public float speed = 5.0f;
@@ -34,5 +34,13 @@ public class PlayerMovement : MonoBehaviour
         }
         //limiter reference from the coordinates of the x-axis will be used from the
         //position of the object in the inspector, without editing the script
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.tag == "enemy")
+        {
+            Destroy(collision.gameObject);
+        }
     }
 }
